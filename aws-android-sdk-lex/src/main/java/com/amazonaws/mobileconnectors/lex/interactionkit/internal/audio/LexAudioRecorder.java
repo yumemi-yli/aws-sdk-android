@@ -282,6 +282,11 @@ public class LexAudioRecorder extends AudioRecorder implements ChunkedAudioSourc
                     && timeSinceLastEvent >= mAudioTimeouts.getNoSpeechTimeout()) {
                 Log.i(TAG, "No speech timeout fired");
                 noSpeechTimeoutFired = true;
+                try {
+                    cleanUpAfterRecording();
+                } catch (IOException e) {
+                    Log.e(TAG, "postAudioRecordingProcessing: ", e);
+                }
                 listener.onNoSpeechTimeout();
             }
         } else if (state == VADState.STARTPOINTED) {
@@ -292,6 +297,11 @@ public class LexAudioRecorder extends AudioRecorder implements ChunkedAudioSourc
                     && timeSinceLastEvent >= mAudioTimeouts.getMaxSpeechTimeout()) {
                 Log.i(TAG, "Max speech timeout fired");
                 maxSpeechTimeoutFired = true;
+                try {
+                    cleanUpAfterRecording();
+                } catch (IOException e) {
+                    Log.e(TAG, "postAudioRecordingProcessing: ", e);
+                }
                 listener.onMaxSpeechTimeout();
             }
         } else {
