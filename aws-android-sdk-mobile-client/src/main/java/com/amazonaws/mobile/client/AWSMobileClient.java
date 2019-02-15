@@ -549,7 +549,7 @@ public final class AWSMobileClient implements AWSCredentialsProvider {
     }
 
     public boolean isSignedIn() {
-        final UserStateDetails userStateDetails = getUserStateDetails(false);
+        final UserStateDetails userStateDetails = getUserStateDetails(true);
         switch (userStateDetails.getUserState()) {
             case SIGNED_IN:
             case SIGNED_OUT_USER_POOLS_TOKENS_INVALID:
