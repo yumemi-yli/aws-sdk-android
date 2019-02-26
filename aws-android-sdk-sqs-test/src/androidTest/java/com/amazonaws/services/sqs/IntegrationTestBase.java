@@ -38,8 +38,7 @@ import com.amazonaws.services.sqs.model.MessageAttributeValue;
  *
  */
 
-@RunWith(AndroidJUnit4.class)
-abstract public class IntegrationTestBase extends AWSTestBase{
+public class IntegrationTestBase extends AWSTestBase{
 
     public static final String PACKAGE_NAME = "sqs";
 
